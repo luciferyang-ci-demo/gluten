@@ -14,8 +14,9 @@
 # limitations under the License.
 
 # Demo of apache/gluten#13535: update_fork_build_status.yml from that PR, with the
-# repository check pointed at this repository. util/update-fork-build-status.js is
-# the PR's script plus the fix that keeps a check's output on update.
+# repository check pointed at this repository. .github/demo/update-fork-build-status.js
+# is the PR's script plus the fix that keeps a check's output on update. It lives
+# outside the PR's path so the demo pull requests don't conflict with main.
 name: Update fork build status (demo)
 
 on:
@@ -40,10 +41,10 @@ jobs:
     steps:
       - uses: actions/checkout@v7
         with:
-          sparse-checkout: .github/workflows/util/update-fork-build-status.js
+          sparse-checkout: .github/demo/update-fork-build-status.js
           sparse-checkout-cone-mode: false
       - uses: actions/github-script@v9
         with:
           script: |
-            const script = require(`${process.env.GITHUB_WORKSPACE}/.github/workflows/util/update-fork-build-status.js`)
+            const script = require(`${process.env.GITHUB_WORKSPACE}/.github/demo/update-fork-build-status.js`)
             await script({ github, context, core })
