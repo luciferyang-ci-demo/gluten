@@ -14,8 +14,8 @@
 # limitations under the License.
 
 # Demo of apache/gluten#13535: update_fork_build_status.yml from that PR, with the
-# repository check pointed at this repository. The script is checked out from the
-# PR's commit, unchanged.
+# repository check pointed at this repository. util/update-fork-build-status.js is
+# the PR's script plus the fix that keeps a check's output on update.
 name: Update fork build status (demo)
 
 on:
@@ -40,8 +40,6 @@ jobs:
     steps:
       - uses: actions/checkout@v7
         with:
-          repository: LuciferYang/gluten
-          ref: 71946091b017bcc333fc84f67bab811e0fb961a0
           sparse-checkout: .github/workflows/util/update-fork-build-status.js
           sparse-checkout-cone-mode: false
       - uses: actions/github-script@v9
