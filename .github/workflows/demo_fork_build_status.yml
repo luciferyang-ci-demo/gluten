@@ -21,7 +21,7 @@ name: Update fork build status (demo)
 
 on:
   schedule:
-    - cron: '*/15 * * * *'
+    - cron: '2-57/5 * * * *'
   workflow_dispatch:
 
 permissions: {}
